@@ -8,12 +8,14 @@ import store from './store/store';
 import Counter from './Counter';
 import DisplayPosts from './store/DisplayPosts';
 import User from './User';
+import MyHome from './MyHome';
+import Video from './Video';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-        <User/>
+        <Video/>
     </Provider>
     
   </React.StrictMode>
