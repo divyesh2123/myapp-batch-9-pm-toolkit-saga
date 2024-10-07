@@ -1,18 +1,37 @@
 import React, { useEffect } from 'react'
-import {useDispatch,useSelector} from 'react-redux'
+import {connect, useDispatch,useSelector} from 'react-redux'
 import { UserRequest } from './slice/userslice';
+//
 
-export default function User() {
+const mapStateToProps = (state) => ({
 
-    const d= useSelector(y=>y.user);
-    console.log(d);
+  user: state.user
 
-    const dis= useDispatch();
+})
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // dispatching plain actions
+    userRequest: () => dispatch(UserRequest())
+  
+  }
+}
+
+
+
+ function User({user,userRequest}) {
+
+   
+    console.log(user);
+
+
     useEffect(()=>{
 
-        dis(UserRequest())
+      userRequest();
     },[])
   return (
     <div>User</div>
   )
 }
+
+export default connect(mapStateToProps,mapDispatchToProps)(User);
